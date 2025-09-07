@@ -6,7 +6,7 @@
   <title>Flink Soundboard</title>
   <style>
     html {
-      font-size: 16px; /* Bas för rem-enheter */
+      font-size: 16px;
       height: 100%;
     }
     body {
@@ -16,14 +16,14 @@
       align-items: center;
       min-height: 100vh;
       background-color: #000;
-      opacity: 0; /* Startar osynlig för fade-in */
+      opacity: 0;
       transition: opacity 0.3s ease;
     }
     body.fade-in {
-      opacity: 1; /* Fade-in vid laddning */
+      opacity: 1;
     }
     body.fade-out {
-      opacity: 0; /* Fade-out vid tillbaka-klick */
+      opacity: 0; 
     }
     .soundboard-container {
       position: relative;
@@ -205,7 +205,7 @@
 <body>
   <div class="soundboard-container">
 
-    <!-- Tillbaka-knapp -->
+    <!-- Tillbakaknapp -->
     <a class="medium-sound-btn"         style="top: 0rem; left: 0rem;" href="hemsida.html">Tillbaka</a>
 
     <!-- Volymkontroll -->
