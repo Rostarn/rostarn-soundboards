@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rostarn Soundboards</title>
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #000;
+      font-family: Arial, sans-serif;
+      transition: opacity 0.3s ease;
+    }
+    body.fade-out {
+      opacity: 0;
+    }
+    .container {
+      text-align: center;
+      color: #ED780C;
+    }
+    h1 {
+      font-size: 48px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+      margin-bottom: 20px;
+    }
+    .button {
+      background: rgba(0, 0, 0, 0.7);
+      border: 2px solid #ED780C;
+      border-radius: 5px;
+      color: #FFE0C2;
+      font-size: 24px;
+      padding: 10px 20px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s, transform 0.1s;
+    }
+    .button:hover {
+      background: rgba(0, 0, 0, 0.9);
+      color: #ffd700;
+    }
+    .button:active {
+      background: rgba(0, 0, 0, 0.9);
+      color: #ff4500;
+      transform: scale(1.1);
+    }
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 32px;
+      }
+      .button {
+        font-size: 18px;
+        padding: 8px 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Rostarn Soundboards</h1>
+    <a class="button" href="flink_soundboard.html" onclick="startTransition(event)">Flink Soundboard</a>
+  </div>
+  <script>
+    function startTransition(event) {
+      event.preventDefault();
+      document.body.classList.add('fade-out');
+      setTimeout(() => {
+        window.location.href = event.target.href;
+      }, 300);
+    }
+  </script>
+</body>
+</html>

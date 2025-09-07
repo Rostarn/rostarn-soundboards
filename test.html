@@ -1,0 +1,241 @@
+﻿<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flink Soundboard</title>
+  <style>
+    html {
+      height: 100%;
+    }
+    body {
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background-color: #000;
+    }
+    .soundboard-container {
+      position: relative;
+      width: 100%;
+      max-width: 1920px;
+      height: auto;
+      aspect-ratio: 16 / 9;
+      background: url('graphics/soundboard_image.jpg') no-repeat center center;
+      background-size: contain;
+    }
+    .sound-btn {
+      position: absolute;
+      background: rgba(0, 0, 0, 0.5);
+      border: 2px solid #ED780C;
+      border-radius: 5px;
+      color: #FFE0C2;
+      font-size: 24px;
+      font-family: Arial, sans-serif;
+      width: 15.1vw; /* 290px / 1920px */
+      height: 3.24vh; /* 35px / 1080px */
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-start;
+      cursor: pointer;
+      padding: 0.28vh 0.42vw;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+      transition: color 0.2s, background 0.2s;
+    }
+    .sound-btn:hover {
+      background: rgba(0, 0, 0, 0.7);
+      color: #ffd700;
+    }
+    .sound-btn:active {
+      background: rgba(0, 0, 0, 0.9);
+      color: #ff4500;
+    }
+    .small-sound-btn {
+      position: absolute;
+      background: rgba(0, 0, 0, 0.5);
+      border: 2px solid #ED780C;
+      border-radius: 5px;
+      color: #FFE0C2;
+      font-size: 24px;
+      font-family: Arial, sans-serif;
+      width: 3.65vw; /* 70px / 1920px */
+      height: 3.24vh;
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-start;
+      cursor: pointer;
+      padding: 0.28vh 0.42vw;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+      transition: color 0.2s, background 0.2s;
+    }
+    .small-sound-btn:hover {
+      background: rgba(0, 0, 0, 0.7);
+      color: #ffd700;
+    }
+    .small-sound-btn:active {
+      background: rgba(0, 0, 0, 0.9);
+      color: #ff4500;
+    }
+    .medium-sound-btn {
+      position: absolute;
+      background: rgba(0, 0, 0, 0.5);
+      border: 2px solid #ED780C;
+      border-radius: 5px;
+      color: #FFE0C2;
+      font-size: 24px;
+      font-family: Arial, sans-serif;
+      width: 7.29vw; /* 140px / 1920px */
+      height: 3.24vh;
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-start;
+      cursor: pointer;
+      padding: 0.28vh 0.42vw;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+      transition: color 0.2s, background 0.2s;
+    }
+    .medium-sound-btn:hover {
+      background: rgba(0, 0, 0, 0.7);
+      color: #ffd700;
+    }
+    .medium-sound-btn:active {
+      background: rgba(0, 0, 0, 0.9);
+      color: #ff4500;
+    }
+    .category-label {
+      position: absolute;
+      color: #ED780C;
+      font-size: 32px;
+      font-family: Arial, sans-serif;
+      font-weight: bold;
+      background: rgba(0, 0, 0, 0.7);
+      border: 2px solid #ED780C;
+      border-radius: 5px;
+      padding: 0.28vh 0.42vw;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+      text-decoration: none;
+      pointer-events: none;
+      width: 14.06vw; /* 270px / 1920px */
+      height: 3.7vh; /* 40px / 1080px */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    @media (max-width: 768px) {
+      .sound-btn, .small-sound-btn, .medium-sound-btn, .category-label {
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="soundboard-container">
+    <!-- Kategorier -->
+    <div class="category-label" style="top: 4.63vh; left: 5.21vw;">HÄLSNINGAR</div>
+    <div class="category-label" style="top: 4.63vh; left: 22.92vw;">SVAR</div>
+    <div class="category-label" style="top: 4.63vh; left: 40.63vw;">SVAR 2</div>
+    <div class="category-label" style="top: 4.63vh; left: 58.33vw;">HOT</div>
+    <div class="category-label" style="top: 4.63vh; left: 76.04vw;">FRÅGOR</div>
+    <div class="category-label" style="top: 55.56vh; left: 5.21vw;">KRÄNKNINGAR</div>
+    <div class="category-label" style="top: 55.56vh; left: 22.92vw;">ÖVRIGT</div>
+    <div class="category-label" style="top: 55.56vh; left: 40.63vw;">KORT</div>
+    <div class="category-label" style="top: 55.56vh; left: 58.33vw;">SKRIK</div>
+
+    <!-- Ljudknappar -->
+
+    <!-- Hälsningar -->
+    <button class="medium-sound-btn" style="top: 9.72vh; left: 5.21vw;" onclick="playSound('sounds/hallå.mp3')">Hallå</button>
+    <button class="medium-sound-btn" style="top: 9.72vh; left: 13.02vw;" onclick="playSound('sounds/hallå_2.mp3')">Hallå 2</button>
+    <button class="medium-sound-btn" style="top: 13.89vh; left: 5.21vw;" onclick="playSound('sounds/ja_hallå.mp3')">Ja hallå</button>
+    <button class="medium-sound-btn" style="top: 13.89vh; left: 13.02vw;" onclick="playSound('sounds/ja_hallå_2.mp3')">Ja hallå 2</button>
+    <button class="sound-btn" style="top: 18.06vh; left: 5.21vw;" onclick="playSound('sounds/det_är_flink.mp3')">Hallå det är Flink!</button>
+
+
+    <!-- Svar -->
+    <button class="sound-btn" style="top: 9.72vh; left: 22.92vw;" onclick="playSound('sounds/ge_fan_i_mig.mp3')">Ge fan i mig</button>
+    <button class="small-sound-btn" style="top: 13.89vh; left: 22.92vw;" onclick="playSound('sounds/ja_1.mp3')">Ja</button>
+    <button class="small-sound-btn" style="top: 13.89vh; left: 26.67vw;" onclick="playSound('sounds/nej.mp3')">Nej</button>
+    <button class="small-sound-btn" style="top: 13.89vh; left: 30.57vw;" onclick="playSound('sounds/nej_2.mp3')">Nej2</button>
+    <button class="small-sound-btn" style="top: 13.89vh; left: 34.38vw;" onclick="playSound('sounds/nej_3.mp3')">Nej3</button>
+    <button class="sound-btn" style="top: 18.06vh; left: 22.92vw;" onclick="playSound('sounds/ta_det_lugnt.mp3')">Nu tar vi det lugnt</button>
+    <button class="sound-btn" style="top: 22.22vh; left: 22.92vw;" onclick="playSound('sounds/hittar_inte_nummer.mp3')">Hittar inte nummer</button>
+    <button class="sound-btn" style="top: 26.39vh; left: 22.92vw;" onclick="playSound('sounds/jämna_plågor.mp3')">Jämna plågor</button>
+    <button class="sound-btn" style="top: 30.56vh; left: 22.92vw;" onclick="playSound('sounds/ja_det_går_bra.mp3')">Ja det går bra</button>
+    <button class="sound-btn" style="top: 34.72vh; left: 22.92vw;" onclick="playSound('sounds/jo_de_gör_de.mp3')">Jo det gör det</button>
+    <button class="sound-btn" style="top: 38.89vh; left: 22.92vw;" onclick="playSound('sounds/ja_det_ska_jag_göra.mp3')">Ja det ska jag göra</button>
+
+
+    <!-- Svar 2 -->
+    <button class="medium-sound-btn" style="top: 9.72vh; left: 40.63vw;" onclick="playSound('sounds/åh_fyfan.mp3')">Åhh fyfan</button>
+    <button class="medium-sound-btn" style="top: 9.72vh; left: 48.44vw;" onclick="playSound('sounds/du_vet_inte.mp3')">Du vet inte</button>
+    <button class="medium-sound-btn" style="top: 13.89vh; left: 40.63vw;" onclick="playSound('sounds/käften_nu.mp3')">Käften nu</button>
+    <button class="medium-sound-btn" style="top: 13.89vh; left: 48.44vw;" onclick="playSound('sounds/mummel.mp3')">Mummel</button>
+    <button class="medium-sound-btn" style="top: 18.06vh; left: 40.63vw;" onclick="playSound('sounds/hur.mp3')">Hur?</button>
+    <button class="medium-sound-btn" style="top: 18.06vh; left: 48.44vw;" onclick="playSound('sounds/är_med_lenny.mp3')">Lenny</button>
+    <button class="sound-btn" style="top: 22.22vh; left: 40.63vw;" onclick="playSound('sounds/oskyldig.mp3')">Jag är oskyldig</button>
+    <button class="sound-btn" style="top: 26.39vh; left: 40.63vw;" onclick="playSound('sounds/det_kommer_huggas.mp3')">Det kommer huggas</button>
+    <button class="sound-btn" style="top: 30.56vh; left: 40.63vw;" onclick="playSound('sounds/kan_inte_göra_nu.mp3')">Kan inte göra det nu</button>
+    <button class="sound-btn" style="top: 34.72vh; left: 40.63vw;" onclick="playSound('sounds/ja_det_vet_jag.mp3')">Ja det vet jag</button>
+    <button class="sound-btn" style="top: 38.89vh; left: 40.63vw;" onclick="playSound('sounds/tar_på_mig_allt.mp3')">Jag tar på mig allt</button>
+
+
+    <!-- Skrik -->
+    <button class="medium-sound-btn" style="top: 60.19vh; left: 58.33vw;" onclick="playSound('sounds/fan.mp3')">FAN!</button>
+    <button class="medium-sound-btn" style="top: 60.19vh; left: 66.15vw;" onclick="playSound('sounds/vafan.mp3')">VAFAN!</button>
+    <button class="medium-sound-btn" style="top: 64.81vh; left: 58.33vw;" onclick="playSound('sounds/snälla.mp3')">SNÄLLA!</button>
+    <button class="medium-sound-btn" style="top: 64.81vh; left: 66.15vw;" onclick="playSound('sounds/wöööw.mp3')">WÖÖW!</button>
+
+
+    <!-- Hot -->
+    <button class="sound-btn" style="top: 9.72vh; left: 58.33vw;" onclick="playSound('sounds/kom_här.mp3')">Kom här</button>
+    <button class="sound-btn" style="top: 13.89vh; left: 58.33vw;" onclick="playSound('sounds/skita_dig_i_röven.mp3')">Skita dig i röven</button>
+    <button class="sound-btn" style="top: 18.06vh; left: 58.33vw;" onclick="playSound('sounds/passa_dig.mp3')">Passa dig</button>
+    <button class="sound-btn" style="top: 22.22vh; left: 58.33vw;" onclick="playSound('sounds/prata_till_punkt.mp3')">Prata till punkt</button>
+
+
+    <!-- Frågor -->
+    <button class="sound-btn" style="top: 9.72vh; left: 76.04vw;" onclick="playSound('sounds/Du.mp3')">Du...</button>
+    <button class="sound-btn" style="top: 13.89vh; left: 76.04vw;" onclick="playSound('sounds/varför_det.mp3')">Varför det?</button>
+    <button class="sound-btn" style="top: 18.06vh; left: 76.04vw;" onclick="playSound('sounds/vart_är_du.mp3')">Vart är du?</button>
+    <button class="sound-btn" style="top: 22.22vh; left: 76.04vw;" onclick="playSound('sounds/är_du_dum.mp3')">Är du dum?</button>
+    <button class="sound-btn" style="top: 26.39vh; left: 76.04vw;" onclick="playSound('sounds/vad_gör_du_för_nått.mp3')">Vad gör du för nått?</button>
+    <button class="sound-btn" style="top: 30.56vh; left: 76.04vw;" onclick="playSound('sounds/vad_vill_ni_mig.mp3')">Vad vill ni mig?</button>
+    <button class="sound-btn" style="top: 34.72vh; left: 76.04vw;" onclick="playSound('sounds/vafan_är_det.mp3')">Vafan är det för nått?</button>
+
+
+    <!-- Kränkningar -->
+    <button class="sound-btn" style="top: 60.19vh; left: 5.21vw;" onclick="playSound('sounds/kuksugare.mp3')">Kuksugare</button>
+    <button class="medium-sound-btn" style="top: 64.81vh; left: 5.21vw;" onclick="playSound('sounds/gubbjävel.mp3')">Gubbjävel</button>
+    <button class="medium-sound-btn" style="top: 64.81vh; left: 13.02vw;" onclick="playSound('sounds/kärringjävel.mp3')">Kärringjävel</button>
+    <button class="sound-btn" style="top: 69.44vh; left: 5.21vw;" onclick="playSound('sounds/käften_nu.mp3')">Käften nu</button>
+
+
+    <!-- Övrigt -->
+    <button class="sound-btn" style="top: 60.19vh; left: 22.92vw;" onclick="playSound('sounds/Jag_kan_mina_stormar.mp3')">Kan mina stormar</button>
+    <button class="sound-btn" style="top: 64.81vh; left: 22.92vw;" onclick="playSound('sounds/vrål_skratt.mp3')">Vrål/Skratt</button>
+    <button class="sound-btn" style="top: 69.44vh; left: 22.92vw;" onclick="playSound('sounds/jag_vill_ha_meth.mp3')">Jag vill ha Meth</button>
+    <button class="sound-btn" style="top: 73.61vh; left: 22.92vw;" onclick="playSound('sounds/nu_är_det_nock.mp3')">Nu är det nock</button>
+
+
+    <!-- Kort -->
+    <button class="medium-sound-btn" style="top: 60.19vh; left: 40.63vw;" onclick="playSound('sounds/ja_1.mp3')">Ja</button>
+    <button class="medium-sound-btn" style="top: 60.19vh; left: 48.44vw;" onclick="playSound('sounds/mmm.mp3')">Mmm</button>
+    <button class="medium-sound-btn" style="top: 64.81vh; left: 40.63vw;" onclick="playSound('sounds/Du.mp3')">Du...!</button>
+    <button class="medium-sound-btn" style="top: 64.81vh; left: 48.44vw;" onclick="playSound('sounds/Hey_1.mp3')">Hey!</button>
+    <button class="medium-sound-btn" style="top: 69.44vh; left: 40.63vw;" onclick="playSound('sounds/Spring.mp3')">Spring!</button>
+    <button class="medium-sound-btn" style="top: 69.44vh; left: 48.44vw;" onclick="playSound('sounds/göm_er.mp3')">Göm er!</button>
+  </div>
+  <script>
+    let currentAudio = null;
+    function playSound(file) {
+      if (currentAudio) {
+        currentAudio.pause();
+        currentAudio.currentTime = 0;
+      }
+      currentAudio = new Audio(file);
+      currentAudio.play();
+    }
+  </script>
+</body>
+</html>
